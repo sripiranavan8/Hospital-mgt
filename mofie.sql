@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2019 at 06:50 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Jan 08, 2019 at 09:53 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,16 +29,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bills` (
-  `Bill_No` double DEFAULT NULL,
+  `Bill_No` varchar(16) NOT NULL,
   `Doctor_Fees` double DEFAULT NULL,
   `Laboratory_Service_Charge` double DEFAULT NULL,
   `Service_Charge` double DEFAULT NULL,
   `Hospital_Charge` double DEFAULT NULL,
   `Medicine_Charge` double DEFAULT NULL,
-  `Total_Discount` decimal(15,0) NOT NULL,
+  `Total_Discount` decimal(2,2) NOT NULL,
   `Patient_ID` varchar(10) NOT NULL,
-  `Guardian_No` varchar(20) DEFAULT NULL
+  `Guardian_No` varchar(20) DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bills`
+--
+
+INSERT INTO `bills` (`Bill_No`, `Doctor_Fees`, `Laboratory_Service_Charge`, `Service_Charge`, `Hospital_Charge`, `Medicine_Charge`, `Total_Discount`, `Patient_ID`, `Guardian_No`, `date`) VALUES
+('001', 1000, NULL, NULL, 100, NULL, '0.50', '12', NULL, '2019-01-02'),
+('002', 10000, NULL, NULL, 500, NULL, '0.20', '12', NULL, '2019-01-02'),
+('003', NULL, NULL, NULL, 1000, NULL, '0.01', '12', NULL, '2019-01-02');
 
 -- --------------------------------------------------------
 
@@ -54,6 +64,14 @@ CREATE TABLE `channeling` (
   `Channeling_Date` date NOT NULL,
   `Time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `channeling`
+--
+
+INSERT INTO `channeling` (`Channeling_ID`, `Patient_ID`, `Channeling_Type`, `Doctor_Name`, `Channeling_Date`, `Time`) VALUES
+('001', '12', 'OPD', '125', '2019-01-09', '12:58:24'),
+('002', '12', 'OPD', '125', '2019-01-03', '13:00:55');
 
 -- --------------------------------------------------------
 
@@ -469,6 +487,12 @@ INSERT INTO `userdetails` (`User_ID`, `Name`, `User_Name`, `NIC_NO`, `Create_Pas
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bills`
+--
+ALTER TABLE `bills`
+  ADD PRIMARY KEY (`Bill_No`);
 
 --
 -- Indexes for table `channeling`

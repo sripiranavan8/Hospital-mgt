@@ -1,10 +1,8 @@
 
 import DBCONNECT.DBconnect;
-import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.awt.Color;
 import java.awt.HeadlessException;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +10,6 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 
